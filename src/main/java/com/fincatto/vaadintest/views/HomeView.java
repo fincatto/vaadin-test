@@ -3,6 +3,7 @@ package com.fincatto.vaadintest.views;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -31,7 +32,7 @@ public class HomeView extends VerticalLayout {
 
         //monta info de sessoes
         this.add(new H4("Vaadin Session Info"));
-        this.add(new Span("System version: " + systemVersion));
+        this.add(new Span("System build version: " + systemVersion));
         this.add(new Span("Session ID: " + vaadinSession.getSession().getId()));
         this.add(new Span("Session creation time: " + LocalDateTime.ofInstant(Instant.ofEpochMilli(vaadinSession.getSession().getCreationTime()), TimeZone.getDefault().toZoneId())));
         this.add(new Span("Session access time: " + LocalDateTime.ofInstant(Instant.ofEpochMilli(vaadinSession.getSession().getLastAccessedTime()), TimeZone.getDefault().toZoneId())));
@@ -39,20 +40,16 @@ public class HomeView extends VerticalLayout {
 
         //monta info de requests
         final var spanCounter = new Span(vaadinSession.getAttribute(SESSION_COUNTER_NAME).toString());
-        final var button = new Button("INCREMENT");
+        final var button = new Button("Increment");
         button.addClickListener(l -> {
             int couter = (int) vaadinSession.getAttribute(SESSION_COUNTER_NAME);
             vaadinSession.setAttribute(SESSION_COUNTER_NAME, ++couter);
             spanCounter.setText(String.valueOf(couter));
         });
         this.add(new H4("Vaadin Session Requests"));
-        this.add(button);
-        this.add(spanCounter);
-
-        this.setSizeFull();
+        HorizontalLayout horizontalLayout = new HorizontalLayout(button, spanCounter);
+        horizontalLayout.setDefaultVerticalComponentAlignment(Alignment.CENTER);
+        this.add(horizontalLayout);
         this.setSpacing(false);
-        this.setPadding(false);
-        this.setJustifyContentMode(JustifyContentMode.CENTER);
-        this.setDefaultHorizontalComponentAlignment(Alignment.CENTER);
     }
 }
