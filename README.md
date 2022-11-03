@@ -11,7 +11,12 @@ Once the JAR file is built, you can run it using `java -jar target/vaadintest-1.
 
 ## Deploying to Artifact Registry
 ```gcloud auth configure-docker us-central1-docker.pkg.dev```
-```mvn compile -Pproduction com.google.cloud.tools:jib-maven-plugin:build -Dimage=us-central1-docker.pkg.dev/wmix-desenvolvimento/apps/vaadin-test```
+```mvn compile -Pproduction com.google.cloud.tools:jib-maven-plugin:build -Dimage=us-central1-docker.pkg.dev/wmix-desenvolvimento/apps/vaadin-test``` 
+```mvn compile -Pproduction jib:build```
 
-##Deploying to Cloud Run
-```gcloud alpha run deploy vaadin-test --project=wmix-desenvolvimento --region=us-central1 --min-instances=0 --max-instances=1 --cpu=1 --memory=256Mi --timeout=30s --cpu-throttling --cpu-boost --port=8080 --allow-unauthenticated --session-affinity --image=us-central1-docker.pkg.dev/wmix-desenvolvimento/apps/vaadin-test:20221103135304 --tag=d20221103135304```
+## Deploying to Cloud Run
+```gcloud alpha run deploy vaadin-test --project=wmix-desenvolvimento --region=us-central1 --min-instances=0 --max-instances=1 --cpu=1 --memory=256Mi --timeout=30s --cpu-throttling --cpu-boost --port=8080 --allow-unauthenticated --session-affinity --image=us-central1-docker.pkg.dev/wmix-desenvolvimento/apps/vaadin-test```
+
+## Performance test
+```ab -n 1000 -c 10 -k -H "Accept-Encoding: gzip, deflate" https://vaadin-test-aj4pe336ta-uc.a.run.app/```
+```ab -n 1000 -c 10 -k -H "Accept-Encoding: gzip, deflate" https://testecr.wmixvideo.com.br/```

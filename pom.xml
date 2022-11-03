@@ -152,6 +152,9 @@
                         <jvmFlags>
                             <jvmFlag>-Dfile.encoding=UTF-8</jvmFlag>
                         </jvmFlags>
+                        <environment>
+                            <BUILD_VERSION>${maven.build.timestamp}</BUILD_VERSION>
+                        </environment>
                     </container>
                     <to>
                         <image>us-central1-docker.pkg.dev/wmix-desenvolvimento/apps/vaadin-test</image>
