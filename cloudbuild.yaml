@@ -24,5 +24,3 @@ steps:
             '--session-affinity',
             '--no-traffic',
             '--image', 'us-central1-docker.pkg.dev/wmix-desenvolvimento/apps/vaadin-test' ]
-#    images:
-#      - gcr.io/PROJECT_ID/IMAGE

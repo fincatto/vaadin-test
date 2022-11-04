@@ -15,7 +15,8 @@ Once the JAR file is built, you can run it using `java -jar target/vaadintest-1.
 ```mvn compile -Pproduction jib:build```
 
 ## Deploying to Cloud Run
-```gcloud alpha run deploy vaadin-test --project=wmix-desenvolvimento --region=us-central1 --min-instances=0 --max-instances=1 --cpu=1 --memory=256Mi --timeout=30s --cpu-throttling --cpu-boost --port=8080 --allow-unauthenticated --session-affinity --image=us-central1-docker.pkg.dev/wmix-desenvolvimento/apps/vaadin-test```
+```gcloud alpha run deploy vaadin-test --project=wmix-desenvolvimento --region=us-central1 --min-instances=0 --max-instances=1 --cpu=1 --memory=256Mi --timeout=30s --cpu-throttling --cpu-boost --port=8080 --allow-unauthenticated --session-affinity --no-traffic --image=us-central1-docker.pkg.dev/wmix-desenvolvimento/apps/vaadin-test```
+```gcloud alpha run services update-traffic vaadin-test --project=wmix-desenvolvimento --region=us-central1 --to-revisions LATEST=100```
 
 ## Enable service account to deploy to Cloud Run from Cloud Build
 ```gcloud iam service-accounts add-iam-policy-binding 95962865581-compute@developer.gserviceaccount.com --member="serviceAccount:95962865581@cloudbuild.gserviceaccount.com" --role="roles/iam.serviceAccountUser" --project="wmix-desenvolvimento"```
