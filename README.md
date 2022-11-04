@@ -11,7 +11,6 @@ Once the JAR file is built, you can run it using `java -jar target/vaadintest-1.
 
 ## Deploying to Artifact Registry
 ```gcloud auth configure-docker us-central1-docker.pkg.dev```
-```mvn compile -Pproduction com.google.cloud.tools:jib-maven-plugin:build -Dimage=us-central1-docker.pkg.dev/wmix-desenvolvimento/apps/vaadin-test``` 
 ```mvn compile -Pproduction jib:build```
 
 ## Deploying to Cloud Run
