@@ -23,4 +23,4 @@ steps:
             '--allow-unauthenticated',
             '--session-affinity',
             '--no-traffic',
-            '--image', 'us-central1-docker.pkg.dev/wmix-desenvolvimento/apps/vaadin-test:$TAG_NAME' ]
+            '--image', 'us-central1-docker.pkg.dev/wmix-desenvolvimento/apps/vaadin-test' ]
