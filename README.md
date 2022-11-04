@@ -17,6 +17,9 @@ Once the JAR file is built, you can run it using `java -jar target/vaadintest-1.
 ## Deploying to Cloud Run
 ```gcloud alpha run deploy vaadin-test --project=wmix-desenvolvimento --region=us-central1 --min-instances=0 --max-instances=1 --cpu=1 --memory=256Mi --timeout=30s --cpu-throttling --cpu-boost --port=8080 --allow-unauthenticated --session-affinity --image=us-central1-docker.pkg.dev/wmix-desenvolvimento/apps/vaadin-test```
 
+## Enable service account to deploy to Cloud Run from Cloud Build
+```gcloud iam service-accounts add-iam-policy-binding 95962865581-compute@developer.gserviceaccount.com --member="serviceAccount:95962865581@cloudbuild.gserviceaccount.com" --role="roles/iam.serviceAccountUser" --project="wmix-desenvolvimento"```
+
 ## Performance test
 ```ab -n 1000 -c 10 -k -H "Accept-Encoding: gzip, deflate" https://vaadin-test-aj4pe336ta-uc.a.run.app/```
 ```ab -n 1000 -c 10 -k -H "Accept-Encoding: gzip, deflate" https://testecr.wmixvideo.com.br/```
