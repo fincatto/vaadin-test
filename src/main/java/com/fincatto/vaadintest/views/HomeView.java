@@ -29,7 +29,6 @@ public class HomeView extends VerticalLayout {
             vaadinSession.setAttribute(SESSION_COUNTER_NAME, 0);
         }
 
-
         //monta info de sessoes
         this.add(new H4("Vaadin Session Info"));
         this.add(new Span("System build version: " + systemVersion));
