@@ -24,7 +24,7 @@ public class HomeView extends VerticalLayout {
     public HomeView() {
         final var systemVersion = Objects.requireNonNullElse(System.getenv(BUILD_VERSION), "local");
         final var vaadinSession = VaadinSession.getCurrent();
-        vaadinSession.getSession().setMaxInactiveInterval(60); //seta o tempo de sessao em segundos
+        //vaadinSession.getSession().setMaxInactiveInterval(60); //seta o tempo de sessao em segundos
         if (vaadinSession.getAttribute(SESSION_COUNTER_NAME) == null) {
             vaadinSession.setAttribute(SESSION_COUNTER_NAME, 0);
         }
