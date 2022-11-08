@@ -24,3 +24,15 @@ steps:
             '--session-affinity',
             '--no-traffic',
             '--image', 'us-central1-docker.pkg.dev/wmix-desenvolvimento/apps/vaadin-test' ]
+
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: [ 'alpha',
+            'run',
+            'services',
+            'update-traffic',
+            'vaadin-test',
+            '--project', 'wmix-desenvolvimento',
+            '--region','us-central1',
+            '--to-revisions', 'LATEST=100']
