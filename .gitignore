@@ -22,3 +22,4 @@ webpack.generated.js
 
 # Terraform
 .terraform.lock.hcl
+terraform*
